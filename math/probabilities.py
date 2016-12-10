@@ -9,9 +9,9 @@ def main():
     shuffleAndDrawCards(totalRuns)
 
 	#Get the probabilities of 2 against total runs
-    print "Chance of the Card being 2 is: " + getProbabilityForCard(2) + "%"
+    print "Chance of the next card being 2 is: " + getProbabilityForCard(2) + "%"
 	#Get the probabilities of 3 against total runs
-    print "Chance of the Card being 3 is: " + getProbabilityForCard(3) + "%"
+    print "Chance of the next card being 3 is: " + getProbabilityForCard(3) + "%"
 
     print resultCount
 
