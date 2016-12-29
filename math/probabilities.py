@@ -3,7 +3,7 @@ import random as rand
 
 cardDeck = [2,2,2,2,2,2,2,2,2,3]
 resultCount = {2: 0, 3:0}
-totalRuns = 100000000
+totalRuns = 10000
 
 def main():
     shuffleAndDrawCards(totalRuns)
