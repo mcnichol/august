@@ -12,3 +12,7 @@ A place to hold all of the projects that dad and August work on together.
         * If correct, returns positive response
         * If incorrect, returns negative response
     * Upon completion, show table of correct and incorrect responses
+
+##Learning Python with Raspberry Pi
+* Building Flowers with Turtle
+    * Create a colorful flower using conditional logic and the Turtle Graphics Module
