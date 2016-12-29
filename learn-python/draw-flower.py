@@ -3,6 +3,7 @@ import turtle
 window = turtle.Screen()
 babbage = turtle.Turtle()
 
+babbage.hideturtle()
 babbage.color("green", "black")
 babbage.left(90)
 babbage.forward(100)
@@ -26,6 +27,5 @@ for i in range(1,24):
     babbage.left(157)
     babbage.forward(50)
 
-babbage.hideturtle()
 
 window.exitonclick()
