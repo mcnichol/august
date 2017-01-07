@@ -8,10 +8,18 @@ import javax.persistence.Id;
 
 @Data
 public class Table {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
-    int rangeStart;
-    int rangeEnd;
-    String topRow;
+    private int id;
+    private int rangeStart;
+    private int rangeEnd;
+    private String header;
+    private String leftColumnAndBody;
+    private String lastRow;
+
+    @Override
+    public String toString() {
+        return header + leftColumnAndBody + lastRow;
+    }
 }

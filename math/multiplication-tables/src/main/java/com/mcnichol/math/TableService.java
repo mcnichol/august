@@ -1,61 +1,68 @@
 package com.mcnichol.math;
 
-public class TableService {
-
+class TableService {
     private String tableColor = ConsoleColor.BLUE.getValue();
-    private String valueColor = ConsoleColor.CYAN.getValue();
+    private String rangeColor = ConsoleColor.CYAN.getValue();
     private String initColor = ConsoleColor.WHITE.getValue();
+    private String rowDivider;
     private int rangeStart;
     private int rangeEnd;
-    private String dividingRow;
 
-    TableService(int rangeStart, int rangeEnd) {
+    Table initializeTable(int rangeStart, int rangeEnd) {
+        Table table = new Table();
+
         this.rangeStart = rangeStart;
         this.rangeEnd = rangeEnd;
+        this.rowDivider = createRowDivider();
+        table.setHeader(createHeader());
+        table.setLeftColumnAndBody(createLeftColumnAndBody());
+        table.setLastRow(createLastRow());
 
-        this.dividingRow = createDividingRow(rangeStart, rangeEnd);
+        return table;
     }
 
-    void initializeTable() {
-        System.out.println();
-        printTableHead();
-        printTableLeftColumnAndBody();
-        printTableLastRow();
-    }
-
-    private String createDividingRow(int tableStart, int tableEnd) {
+    private String createRowDivider() {
         StringBuilder sb = new StringBuilder();
 
         sb.append(tableColor).append("--|");
-        for (int i = tableStart; i <= tableEnd - tableStart; i++) {
+        for (int i = rangeStart; i <= rangeEnd - rangeStart; i++) {
             sb.append("---|");
         }
 
         return sb.toString();
     }
 
-    private void printTableHead() {
-        System.out.print(tableColor + "  |");
+    private String createHeader() {
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(tableColor).append("  |");
         for (int i = rangeStart; i <= rangeEnd; i++) {
-            System.out.print(valueColor + " " + i + " " + tableColor + "|");
+            sb.append(rangeColor).append(" ").append(i).append(" ").append(tableColor).append("|");
         }
-        System.out.println();
+        sb.append("\n");
+
+        return sb.toString();
     }
 
-    private void printTableLeftColumnAndBody() {
+    private String createLeftColumnAndBody() {
+        StringBuilder sb = new StringBuilder();
+
         for (int i = rangeStart; i <= rangeEnd; i++) {
-            System.out.println(dividingRow);
-            System.out.print(valueColor + String.valueOf(i) + tableColor + " |");
+            sb.append(rowDivider).append("\n");
+            sb.append(rangeColor).append(String.valueOf(i)).append(tableColor).append(" |");
 
             for (int j = rangeStart; j <= rangeEnd; j++) {
-                System.out.print(initColor + " █ " + tableColor + "|");
+                sb.append(initColor).append(" █ ").append(tableColor).append("|");
 
             }
-            System.out.println();
+            sb.append("\n");
+
         }
+        return sb.toString();
     }
 
-    private void printTableLastRow() {
-        System.out.println(dividingRow);
+    private String createLastRow() {
+        return rowDivider;
     }
 }
