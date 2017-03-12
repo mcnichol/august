@@ -1,6 +1,8 @@
-package com.mcnichol.math;
+package com.mcnichol.math.table;
 
-class TableService {
+import com.mcnichol.math.ConsoleColor;
+
+class MathTableService {
     private String tableColor = ConsoleColor.BLUE.getValue();
     private String rangeColor = ConsoleColor.CYAN.getValue();
     private String initColor = ConsoleColor.WHITE.getValue();
@@ -8,17 +10,19 @@ class TableService {
     private int rangeStart;
     private int rangeEnd;
 
-    Table initializeTable(int rangeStart, int rangeEnd) {
-        Table table = new Table();
+    MathTable initializeMathTable(int rangeStart, int rangeEnd) {
+        MathTable mathTable = new MathTable.MathTableBuilder()
+                .rangeStart(rangeStart)
+                .rangeEnd(rangeEnd)
+                .header(createHeader())
+                .leftColumnAndBody(createLeftColumnAndBody())
+                .lastRow(createLastRow()).build();
 
         this.rangeStart = rangeStart;
         this.rangeEnd = rangeEnd;
         this.rowDivider = createRowDivider();
-        table.setHeader(createHeader());
-        table.setLeftColumnAndBody(createLeftColumnAndBody());
-        table.setLastRow(createLastRow());
 
-        return table;
+        return mathTable;
     }
 
     private String createRowDivider() {
@@ -64,5 +68,10 @@ class TableService {
 
     private String createLastRow() {
         return rowDivider;
+    }
+
+
+    public MathTable createMathTable() {
+        return new MathTable.MathTableBuilder().build();
     }
 }
