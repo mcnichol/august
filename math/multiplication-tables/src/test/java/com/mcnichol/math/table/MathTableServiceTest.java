@@ -1,11 +1,13 @@
 package com.mcnichol.math.table;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class MathTableServiceTest {
 
+    @Disabled
     @Test
     void generatesDefaultMultiplicationTable() {
         MathTableService mathTableService = new MathTableService();
