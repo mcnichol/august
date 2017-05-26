@@ -1,36 +1,46 @@
 buildscript {
-	ext {
-		springBootVersion = '1.4.2.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+    ext {
+        springBootVersion = "1.4.2.RELEASE"
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "org.junit.platform:junit-platform-gradle-plugin:1.0.0-M3"
+    }
 }
 
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
+apply plugin: "java"
+apply plugin: "org.junit.platform.gradle.plugin"
+apply plugin: "org.springframework.boot"
 
 jar {
-	baseName = 'multiplication-tables'
-	version = '0.0.1-SNAPSHOT'
+    baseName = "multiplication-tables"
+    version = "0.0.1-SNAPSHOT"
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	compile('org.springframework.data:spring-data-rest-hal-browser')
-	runtime('com.h2database:h2')
-	compileOnly('org.projectlombok:lombok')
-	testCompile 'org.junit.jupiter:junit-jupiter-engine:5.0.0-M3'
-	testCompile 'org.assertj:assertj-core:3.6.2'
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("org.springframework.data:spring-data-rest-hal-browser")
+    runtime("com.h2database:h2")
+    compileOnly("org.projectlombok:lombok")
+
+    testCompile("org.junit.jupiter:junit-jupiter-api:5.0.0-M3")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.0.0-M3")
+    testCompile("org.junit.platform:junit-platform-runner:1.0.0-M3")
+    testCompile("org.assertj:assertj-core:3.6.2")
+}
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
